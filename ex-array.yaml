@@ -1,0 +1,17 @@
+---
+- name: check arrays
+  hosts:  ubuntu
+  vars:
+    users:
+      male:
+        fname:  John
+        lname:  doe
+      female:
+        fname:  anne
+        lname:  kanthi
+  tasks:
+    - name: echo variable values
+      debug:
+        msg:
+          - "{{ users.male.fname  }}"
+          - "{{ users.female.lname  }}"
