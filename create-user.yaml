@@ -1,0 +1,10 @@
+---
+  - name: create user
+    hosts:  ubuntu
+    vars_files: secrets.yaml
+    tasks:
+      - name: create user
+        user:
+          name:   linda
+          password: "{{ password  | password_hash('sha512')  }}"
+ubuntu@master:~/ansible-command-dir$ cat secrets.yaml
