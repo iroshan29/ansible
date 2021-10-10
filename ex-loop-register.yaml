@@ -1,0 +1,23 @@
+- name: Loop Register Test
+  gather_facts: no
+  hosts:  ubuntu
+  vars:
+    users:
+      - name: john
+        uid:  1401
+      - name: nany
+        uid:  1402
+
+  tasks:
+  - name: Looping installing packages
+    user:
+      name: "{{ item.name }}"
+      uid:  "{{ item.uid  }}"
+      state:  absent
+      remove: yes
+    loop: "{{ users }}"
+    register: echo_results
+
+  - name: Show echo_results variable
+    debug:
+      msg:  "{{ echo_results  }}"
