@@ -1,0 +1,9 @@
+---
+- name: install package
+  hosts:  ubuntu
+  vars_files:
+    - vars/var.yaml
+  tasks:
+    - name: install
+      apt:
+        name: "{{ package  }}"
