@@ -1,0 +1,11 @@
+- name: simple
+  hosts:  ubuntu
+
+  tasks:
+    - name: install pkg in loop
+      apt:
+        name: "{{ item  }}"
+        state:  latest
+      loop:
+        - vim
+        - rsync
